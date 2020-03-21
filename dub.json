@@ -1,0 +1,20 @@
+{
+	"name": "sudoku",
+	"description": "Sudoku app written in Dlang using GTK",
+
+	"authors": ["Katsu"],
+	"license": "MIT",
+
+	"sourcePaths": ["source"],
+	"importPaths": ["source"],
+
+	"targetPath": "bin",
+	"targetName": "sudoku",
+	"buildOptions": ["optimize"],
+
+	"dependencies": {
+		"silly": "~>0.8.2",
+		"riverd-ncurses": "~>1.0.4",
+		"gtk-d:gtkd": "~>3.9.0"
+	}
+}

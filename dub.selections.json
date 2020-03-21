@@ -1,0 +1,9 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"gtk-d": "3.9.0",
+		"riverd-loader": "1.0.2",
+		"riverd-ncurses": "1.0.5",
+		"silly": "0.8.2"
+	}
+}
