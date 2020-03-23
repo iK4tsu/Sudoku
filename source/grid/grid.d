@@ -140,7 +140,7 @@ version(unittest)
 @("Grid: ctor")
 unittest
 {
-    Grid g = new Grid(4, 4, puzzle4x4);
+    Grid g = new Grid(4, puzzle4x4);
 
     assert(g[0, 0].blocked);
     assert(!g[0, 1].blocked);
@@ -149,7 +149,7 @@ unittest
 @("Grid: sub-divisions")
 unittest
 {
-    Grid g4x4 = new Grid(4, 4, puzzle4x4);
+    Grid g4x4 = new Grid(4, puzzle4x4);
 
     assert(g4x4.nrow(0) == [1, 0, 0, 3]);
     assert(g4x4.ncolumn(2) == [0, 1, 0, 4]);
@@ -159,8 +159,8 @@ unittest
 @("Grid: search")
 unittest
 {
-    Grid g4x4 = new Grid(4, 4, puzzle4x4);
-    Grid g9x9 = new Grid(9, 9, puzzle9x9);
+    Grid g4x4 = new Grid(4, puzzle4x4);
+    Grid g9x9 = new Grid(9, puzzle9x9);
 
     assert(g9x9.findInColumn(2, 8));
     assert(!g4x4.findInRow(0, 4));
@@ -171,7 +171,7 @@ unittest
 @("Grid: accessors")
 unittest
 {
-    Grid g4x4 = new Grid(4, 4, puzzle4x4);
+    Grid g4x4 = new Grid(4, puzzle4x4);
 
     assert(g4x4[0, 1] == g4x4.numbers[0][1]);
     assert(g4x4[0, 0].n == 1);
