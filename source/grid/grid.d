@@ -11,7 +11,7 @@ import grid.number;
 
 class Grid
 {
-    public uint side;
+    public const uint side;
     public Number[][] numbers;
     public uint sectionSize;
 
