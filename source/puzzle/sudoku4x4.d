@@ -6,7 +6,7 @@ class Sudoku4x4 : Sudoku
 {
     this(in uint[][] puzzle)
     {
-        super(4, 4, puzzle);
+        super(4, puzzle);
     }
 }
 
