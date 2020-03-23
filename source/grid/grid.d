@@ -21,6 +21,12 @@ class Grid
         numbers = new Number[][](y, x);
         sectionSize = to!(uint)(sqrt(to!float(x)));
         build(puzzle);
+
+
+    private bool isPerfectSquare(in uint side) const
+    {
+        const double dside = to!double(side);
+        return dside % sqrt(dside) == 0;
     }
 
 
