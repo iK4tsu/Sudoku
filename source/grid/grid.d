@@ -11,16 +11,20 @@ import grid.number;
 
 class Grid
 {
-    public Tuple!(uint, "x", uint, "y") dim;
+    public const uint side;
     public Number[][] numbers;
     public uint sectionSize;
 
-    this(in uint x, in uint y, in uint[][] puzzle)
+    this(in uint side, in uint[][] puzzle)
     {
-        dim = tuple!("x", "y")(x, y);
-        numbers = new Number[][](y, x);
-        sectionSize = to!(uint)(sqrt(to!float(x)));
-        build(puzzle);
+        if (isPerfectSquare(side))
+        {
+            this.side = side;
+            numbers = new Number[][](side, side);
+            sectionSize = to!(uint)(sqrt(to!float(side)));
+            build(puzzle);
+        }
+    }
 
 
     private bool isPerfectSquare(in uint side) const
@@ -32,8 +36,8 @@ class Grid
 
     private void build(in uint[][] puzzle)
     {
-        for (uint row = 0; row < dim.y; row++)
-            for (uint column = 0; column < dim.x; column++)
+        for (uint row = 0; row < side; row++)
+            for (uint column = 0; column < side; column++)
                 numbers[row][column] = new Number(puzzle[row][column]);
     }
 
@@ -83,7 +87,7 @@ class Grid
     {
         import std.stdio : writeln;
 
-        for (uint i; i < dim.x; i++) nrow(i).writeln;
+        for (uint i; i < side; i++) nrow(i).writeln;
     }
 
 
