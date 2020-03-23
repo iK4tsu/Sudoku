@@ -6,7 +6,7 @@ class Sudoku9x9 : Sudoku
 {
     public this(in uint[][] puzzle)
     {
-        super(9, 9, puzzle);
+        super(9, puzzle);
     }
 }
 
