@@ -13,7 +13,6 @@ class Grid
 {
     public const uint side;
     public Number[][] numbers;
-    public uint sectionSize;
 
     this(in uint side, in uint[][] puzzle)
     {
@@ -21,9 +20,14 @@ class Grid
         {
             this.side = side;
             numbers = new Number[][](side, side);
-            sectionSize = to!(uint)(sqrt(to!float(side)));
             build(puzzle);
         }
+    }
+
+
+    public uint sectionSize() const
+    {
+        return to!(uint)(sqrt(to!double(side)));
     }
 
 
