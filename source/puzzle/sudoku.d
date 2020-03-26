@@ -30,11 +30,11 @@ public abstract class Sudoku
     private uint backtrack(in uint column, in uint row)
     {
         // sees whether or not the value in the current cell was a given one
-        if (grid[row, column].blocked)
+        if (grid[row, column].isBlocked)
         {
             if (column < grid.side - 1)   return backtrack(column + 1, row);
             else if (row < grid.side - 1) return backtrack(0, row + 1);
-            else                           return grid[row, column].n;
+            else                           return grid[row, column].number;
         }
 
         uint ret;
@@ -42,7 +42,7 @@ public abstract class Sudoku
         {
             if (!grid.find(row, column, i))
             {
-                grid[row, column].n = i;
+                grid[row, column].number = i;
 
                 if (column < grid.side - 1)   ret = backtrack(column + 1, row);
                 else if (row < grid.side - 1) ret = backtrack(0, row + 1);
