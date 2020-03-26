@@ -7,19 +7,20 @@ import std.math : sqrt;
 import std.stdio : write, writeln;
 import std.typecons;
 
-import grid.number;
+import grid.cell;
 
 class Grid
 {
     public const uint side;
-    public Number[][] numbers;
+    public Cell[][] cells;
+
 
     this(in uint side, in uint[][] puzzle)
     {
         if (isPerfectSquare(side))
         {
             this.side = side;
-            numbers = new Number[][](side, side);
+            cells = new Cell[][](side, side);
             build(puzzle);
         }
     }
@@ -42,37 +43,37 @@ class Grid
     {
         for (uint row = 0; row < side; row++)
             for (uint column = 0; column < side; column++)
-                numbers[row][column] = new Number(puzzle[row][column]);
+                cells[row][column] = new Cell(puzzle[row][column]);
     }
 
 
     auto opIndexAssign(uint value, uint row, uint column)
     {
-        return numbers[row][column].n = value;
+        return cells[row][column].number = value;
     }
 
 
     ref auto opIndex(uint row, uint column)
     {
-        return numbers[row][column];
+        return cells[row][column];
     }
 
 
     public uint[][] opCall()
     {
-        return numbers.map!(row => row.map!(x => x.n).array).array;
+        return cells.map!(row => row.map!(x => x.number).array).array;
     }
 
 
     public uint[] nrow(in uint row)
     {
-        return (numbers[row]).map!(x => x.n).array;
+        return (cells[row]).map!(x => x.number).array;
     }
 
 
     public uint[] ncolumn(in uint column)
     {
-        return numbers.map!(x => x[column].n).array;
+        return cells.map!(x => x[column].number).array;
     }
 
 
@@ -81,8 +82,8 @@ class Grid
         row = row > sectionSize - 1 ? row - row % sectionSize : 0;
         column = column > sectionSize - 1 ? column - column % sectionSize : 0;
 
-        return numbers.map!(x => x[column .. column + sectionSize])
-                        .map!(x => x.map!(x => x.n).array)
+        return cells.map!(x => x[column .. column + sectionSize])
+                        .map!(x => x.map!(x => x.number).array)
                         .array[row .. row + sectionSize];
     }
 
@@ -146,8 +147,8 @@ unittest
 {
     Grid g = new Grid(4, puzzle4x4);
 
-    assert(g[0, 0].blocked);
-    assert(!g[0, 1].blocked);
+    assert(g[0, 0].isBlocked);
+    assert(!g[0, 1].isBlocked);
 }
 
 @("Grid: sub-divisions")
@@ -177,9 +178,9 @@ unittest
 {
     Grid g4x4 = new Grid(4, puzzle4x4);
 
-    assert(g4x4[0, 1] == g4x4.numbers[0][1]);
-    assert(g4x4[0, 0].n == 1);
+    assert(g4x4[0, 1] == g4x4.cells[0][1]);
+    assert(g4x4[0, 0].number == 1);
 
     g4x4[0, 1] = 4;
-    assert(g4x4[0, 1].n == 4);
+    assert(g4x4[0, 1].number == 4);
 }
