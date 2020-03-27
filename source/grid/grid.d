@@ -90,17 +90,7 @@ class Grid
 
     public void print()
     {
-        import std.stdio : writeln;
-
         for (uint i; i < side; i++) nrow(i).writeln;
-    }
-
-
-    public bool find(in uint row, in uint column, in uint n)
-    {
-        return findInColumn(column, n) ||
-                findInRow(row, n)      ||
-                findInSection(row, column, n);
     }
 
 
@@ -170,7 +160,6 @@ unittest
     assert(g9x9.findInColumn(2, 8));
     assert(!g4x4.findInRow(0, 4));
     assert(g9x9.findInSection(1, 2, 7));
-    assert(g4x4.find(0, 1, 3));
 }
 
 @("Grid: accessors")
