@@ -7,6 +7,7 @@ import rule;
 
 public abstract class Sudoku
 {
+    // FIXME: sudoku: change visibility attribute
     public Grid grid;
     public Rule[] rules;
 

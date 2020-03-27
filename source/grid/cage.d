@@ -4,6 +4,7 @@ import grid.cell;
 
 class Cage
 {
+    // FIXME: cage: change visibility attribute
     public Cell[] cells;
 
     this(Cell[] cells ...)
@@ -13,4 +14,6 @@ class Cage
             this.cells ~= cell;
         }
     }
+
+    // TODO: cage: implement methods
 }

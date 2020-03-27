@@ -11,6 +11,7 @@ import grid.cell;
 
 class Grid
 {
+    // FIXME: grid: change visibility attribute
     public const uint side;
     public Cell[][] cells;
 
