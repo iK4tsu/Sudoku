@@ -1,12 +1,14 @@
 module puzzle.sudoku9x9;
 
 import puzzle.sudoku;
+import rule.ruleClasssic;
+
 
 class Sudoku9x9 : Sudoku
 {
     public this(in uint[][] puzzle)
     {
-        super(9, puzzle);
+        super(9, puzzle, new RuleClassic(this));
     }
 }
 

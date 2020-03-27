@@ -1,12 +1,13 @@
 module puzzle.sudoku4x4;
 
 import puzzle.sudoku;
+import rule.ruleClasssic;
 
 class Sudoku4x4 : Sudoku
 {
     this(in uint[][] puzzle)
     {
-        super(4, puzzle);
+        super(4, puzzle, new RuleClassic(this));
     }
 }
 
