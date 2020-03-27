@@ -3,20 +3,33 @@ module puzzle.sudoku;
 import std.stdio : writeln;
 
 import grid.grid;
+import rule;
 
 public abstract class Sudoku
 {
     public Grid grid;
+    public Rule[] rules;
 
 
     this(in uint[][] puzzle)
     {
         grid = new Grid(9, puzzle);
+        rules ~= new RuleClassic(this);
     }
 
-    this(in uint side, in uint[][] puzzle)
+    this(in uint side, in uint[][] puzzle, Rule[] rules ...)
     {
         grid = new Grid(side, puzzle);
+        foreach (ref Rule rule; rules)
+        {
+            add(rule);
+        }
+    }
+
+
+    public void add(Rule rule)
+    {
+        rules ~= rule;
     }
 
 
@@ -38,9 +51,15 @@ public abstract class Sudoku
         }
 
         uint ret;
+        bool valid;
         for (uint i = 1; i <= grid.side; i++)
         {
-            if (!grid.find(row, column, i))
+            foreach (Rule rule; rules)
+            {
+                valid = !rule.find(row, column, i);
+            }
+
+            if (valid)
             {
                 grid[row, column].number = i;
 
