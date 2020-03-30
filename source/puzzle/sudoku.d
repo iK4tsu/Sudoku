@@ -43,9 +43,10 @@ public abstract class Sudoku
 
 
     // using backtrack algorithm
-    public void solve()
+    public auto solve()
     {
         backtrack(0, 0);
+        return grid();
     }
 
 
