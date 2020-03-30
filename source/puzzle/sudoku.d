@@ -75,9 +75,10 @@ public abstract class Sudoku
 
                 if (column < grid.side - 1)   ret = backtrack(column + 1, row);
                 else if (row < grid.side - 1) ret = backtrack(0, row + 1);
-                else                           return i;
+                else                          return i;
 
                 if (ret != 0) return ret;
+                else grid[row, column] = 0;
             }
         }
 
