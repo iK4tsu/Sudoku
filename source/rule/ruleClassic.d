@@ -8,7 +8,7 @@ class RuleClassic : Rule
 {
     override public bool validate(in uint row, in uint column, in uint number)
     {
-        // check rows, columns, section
+        // check row, column and section
         return !sudoku.grid.findInColumn(column, number) &&
                 !sudoku.grid.findInRow(row, number)      &&
                 !sudoku.grid.findInSection(row, column, number);

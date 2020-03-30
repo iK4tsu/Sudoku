@@ -10,10 +10,10 @@ module algorithm.multiCartisianProduct;
  * Returns: A T matrix type with the cartisian product
  *
  * Examples:
- * --------------------
+ * ---
  * int[] a = [1, 2], b[1, 4];
  * multiCartisianProduct!int([a, b]) == [[1, 1], [2, 1], [1, 4], [2, 4]];
- * --------------------
+ * ---
  *
  * Authors: Era Scarecrow
  * See_Also: https://forum.dlang.org/post/leugranlzvwcdizvmagf@forum.dlang.org

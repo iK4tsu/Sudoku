@@ -1,5 +1,6 @@
 module grid.cell;
 
+// FIXME: cell: refactor to struct
 class Cell
 {
     public uint number;

@@ -1,8 +1,8 @@
 module grid.cage;
 
 import std.algorithm : canFind, count, filter, isStrictlyMonotonic, map, sum;
-import std.array     : array, join;
-import std.range     : iota, repeat, replicate, chunks;
+import std.array : array, join;
+import std.range : iota, repeat, replicate, chunks;
 
 import algorithm.multiCartisianProduct;
 import grid.cell;
@@ -23,9 +23,25 @@ class Cage
     }
 
 
-    // TODO: cage: documentation
+    /**
+     * Constructs every possible solution in `this`
+     * *Method used only internaly*
+     *
+     * Examples:
+     * ---
+     * new Cage(5, new Cell(...), new Cell(...));
+     * assert(possibleSolutions == [[1,4],[2,3]]);
+     * ---
+     *
+     * Returns:
+     *     `uint[][]` with every solution possible
+     */
     private auto buildSolutions()
     {
+        // calculate the max range of numbers possible for each Cell
+        // if the cageSum is 5, then maxSeq will be 5
+        // A: the range of 1 until maxSeq
+        // B: matrix of A*numberOfCells arrays
         const auto maxseq = cageSum <= 9 ? cageSum + 1 : 10;
         uint[] A = iota(1U, maxseq).array;
         uint[][] B;
@@ -39,18 +55,63 @@ class Cage
     }
 
 
+    /**
+     * Checks if a **Cell** exist in `this`
+     *
+     * Params:
+     *     cell = the **Cell** to be checked
+     *
+     * Examples:
+     * ---
+     * !this.contains(cell);
+     * ---
+     *
+     * Returns:
+     *     `true` if `this` contains the **Cell**
+     *     `false` otherwise
+     */
     public bool contains(Cell cell)
     {
         return canFind(cells, cell);
     }
 
 
+    /**
+     * Checks if a number exist in `this`
+     *
+     * Params:
+     *     number = the number to be checked
+     *
+     * Examples:
+     * ---
+     * !this.contains(number);
+     * ---
+     *
+     * Returns:
+     *     `true` if `this` contains the number
+     *     `false` otherwise
+     */
     public bool contains(in uint number)
     {
         return canFind(ncells, number);
     }
 
 
+    /**
+     * Checks if a number can be stored in `this`
+     *
+     * Params:
+     *     number = number to be checked
+     *
+     * Examples:
+     * ---
+     * !this.isValid(number);
+     * ---
+     *
+     * Returns:
+     *     `true` if is valid
+     *     `false` otherwise
+     */
     public bool isValid(in uint number)
     {
         if (isComplete)
@@ -62,12 +123,33 @@ class Cage
     }
 
 
+    /**
+     * Numeric array of cells
+     *
+     * Returns:
+     *     Range of the numbers in `this`
+     */
     public auto ncells() @property
     {
         return cells.map!(x => x.number);
     }
 
 
+    /**
+     * Checks if `this` is full
+     * A **Cage** is full when there is just one `0` in it
+     * The reason being, the number isn't placed in the puzzle until
+     *     it's considered valid
+     *
+     * Examples:
+     * ---
+     * !this.isComplete();
+     * ---
+     *
+     * Returns:
+     *     `true` if it's filled with numbers
+     *     `false` otherwise
+     */
     public bool isComplete()
     {
         return count(ncells, 0) == 1;
