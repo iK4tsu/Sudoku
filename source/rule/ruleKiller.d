@@ -10,16 +10,35 @@ class RuleKiller : Rule
     // FIXME: rule_killer: change visibility attribute
     public Cage[] cages;
 
-    this(Sudoku sudoku)
+
+    // TODO: ruleKiller: documentation
+    override public bool validate(in uint row, in uint column, in uint number)
     {
-        super(sudoku);
+        Cage cage = get(sudoku.grid[row, column]);
+        if (cage !is null)
+        {
+            return !cage.contains(number) &&
+                    cage.isValid(number);
+        }
+
+        return true;
     }
 
 
-    override public bool find(in uint row, in uint column, in uint number)
+    private Cage get(Cell cell)
     {
-        // TODO: rule_killer: implement find
-        // every cage;
-        return false;
+        foreach (Cage cage; cages)
+        {
+            if (cage.contains(cell))
+                return cage;
+        }
+
+        return null;
+    }
+
+
+    public void add(Cage[] cages...)
+    {
+        this.cages = cages;
     }
 }
