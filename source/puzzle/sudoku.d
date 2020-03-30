@@ -1,5 +1,6 @@
 module puzzle.sudoku;
 
+import std.array : array;
 import std.stdio : writeln;
 
 import grid.grid;
@@ -12,25 +13,32 @@ public abstract class Sudoku
     public Rule[] rules;
 
 
-    this(in uint[][] puzzle)
+    this(in uint side, in uint[][] puzzle)
     {
-        grid = new Grid(9, puzzle);
-        rules ~= new RuleClassic(this);
+        this(side, puzzle, new RuleClassic());
     }
 
-    this(in uint side, in uint[][] puzzle, Rule[] rules ...)
+    this(in uint side, in uint[][] puzzle, Rule[] rules...)
     {
         grid = new Grid(side, puzzle);
-        foreach (ref Rule rule; rules)
+        add(rules);
+        regist();
+    }
+
+
+    // TODO: sudoku: documentation
+    private void regist()
+    {
+        foreach (Rule rule; rules)
         {
-            add(rule);
+            rule.sudoku = this;
         }
     }
 
 
-    public void add(Rule rule)
+    public void add(Rule[] rules...)
     {
-        rules ~= rule;
+        this.rules ~= rules;
     }
 
 
