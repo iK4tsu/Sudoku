@@ -6,13 +6,18 @@ class Cage
 {
     // FIXME: cage: change visibility attribute
     public Cell[] cells;
+    public uint[][] possibleSolutions;
+    public const uint cageSum;
 
-    this(Cell[] cells ...)
+
+    this(in uint cageSum, Cell[] cells ...)
     {
-        foreach (ref Cell cell; cells)
-        {
-            this.cells ~= cell;
-        }
+        this.cageSum = cageSum;
+        this.cells = cells.array;
+    }
+
+
+    {
     }
 
     // TODO: cage: implement methods
