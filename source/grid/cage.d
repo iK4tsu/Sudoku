@@ -140,6 +140,7 @@ class Cage
      * A **Cage** is full when there is just one `0` in it
      * The reason being, the number isn't placed in the puzzle until
      *     it's considered valid
+     * *Method used internaly only*
      *
      * Examples:
      * ---
@@ -158,3 +159,53 @@ class Cage
 
 
 // TODO: cage: unittests
+@("Cage: ctor")
+unittest
+{
+    const Cage cage = new Cage(5, new Cell(0), new Cell(0));
+
+    assert(cage.cageSum == 5);
+    assert(cage.possibleSolutions == [[2,3],[1,4]]);
+    assert(cage.cells.length == 2);
+}
+
+
+@("Cage: valid check")
+unittest
+{
+    Cage cage = new Cage(5, new Cell(0), new Cell(2));
+
+    assert(cage.isValid(3));
+    assert(!cage.isValid(2));
+}
+
+
+@("Cage: search")
+unittest
+{
+    Cell cell = new Cell(0);
+    Cage cage = new Cage(5, cell, new Cell(2));
+
+    assert(cage.contains(cell));
+    assert(!cage.contains(new Cell(2)));
+
+    assert(cage.contains(2));
+}
+
+
+@("Cage: complete check")
+unittest
+{
+    Cage cage = new Cage(5, new Cell(0), new Cell(2));
+
+    assert(cage.isComplete());
+}
+
+
+@("Cage: numeric cells")
+unittest
+{
+    Cage cage = new Cage(5, new Cell(2), new Cell(0));
+
+    assert(cage.ncells.array == [2,0]);
+}
