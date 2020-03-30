@@ -57,7 +57,8 @@ public abstract class Sudoku
         {
             foreach (Rule rule; rules)
             {
-                valid = !rule.find(row, column, i);
+                valid = rule.validate(row, column, i);
+                if (!valid) break;
             }
 
             if (valid)
