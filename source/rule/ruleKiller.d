@@ -14,13 +14,20 @@ class RuleKiller : Rule
     // TODO: ruleKiller: documentation
     override public bool validate(in uint row, in uint column, in uint number)
     {
+        // checks if the Cell is in cages
         Cage cage = get(sudoku.grid[row, column]);
+        
+        // if it is...
         if (cage !is null)
         {
+            // checks if an equal number already exists in the Cage
+            // checks if the number exists in the possible solutions and
+            //     it's sum with the other values
             return !cage.contains(number) &&
                     cage.isValid(number);
         }
 
+        // if it isn't then it's valid
         return true;
     }
 
@@ -37,6 +44,17 @@ class RuleKiller : Rule
     }
 
 
+    /**
+     * Add cages to `this`
+     *
+     * Params:
+     *     cages = cages to add
+     *
+     * Examples:
+     * ---
+     * this.add(new Cage(cageSum, new Cell(sudoku.grid[row, column], ...)))
+     * ---
+     */
     public void add(Cage[] cages...)
     {
         this.cages = cages;
