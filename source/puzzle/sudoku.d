@@ -84,4 +84,16 @@ public abstract class Sudoku
         grid[row, column] = 0;
         return 0;
     }
+
+
+    public R get(R : Rule)()
+    {
+        R r;
+        foreach (Rule rule; rules)
+        {
+            if ((r = cast(R)(rule)) !is null) return r;
+        }
+
+        return null;
+    }
 }
