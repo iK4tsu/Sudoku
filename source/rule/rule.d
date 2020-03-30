@@ -13,5 +13,6 @@ abstract class Rule
         this.sudoku = sudoku;
     }
 
-    public abstract bool find(in uint row, in uint column, in uint number);
+
+    public abstract bool validate(in uint row, in uint column, in uint number);
 }
