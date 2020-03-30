@@ -5,12 +5,18 @@ import puzzle.sudoku;
 
 abstract class Rule
 {
-    // FIXME: rule: change visibility attribute
-    public Sudoku sudoku;
+    protected Sudoku _sudoku;
 
-    this (Sudoku sudoku)
+
+    public void sudoku(Sudoku sudoku) @property
     {
-        this.sudoku = sudoku;
+        _sudoku = sudoku;
+    }
+
+
+    public Sudoku sudoku() @property
+    {
+        return _sudoku;
     }
 
 

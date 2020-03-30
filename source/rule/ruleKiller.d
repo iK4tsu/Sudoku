@@ -1,6 +1,7 @@
 module rule.ruleKiller;
 
 import grid.cage;
+import grid.cell;
 import puzzle.sudoku;
 import rule.rule;
 
