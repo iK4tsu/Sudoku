@@ -55,7 +55,7 @@ unittest
 {
     Sudoku4x4 puzzle = new Sudoku4x4(puzzle4x4);
 
-    assert(puzzle.grid() == puzzle4x4);
+    assert(puzzle.ngrid == puzzle4x4);
 }
 
 
