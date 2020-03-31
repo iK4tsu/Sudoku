@@ -17,7 +17,7 @@ class Cage
     this(in uint cageSum, Cell[] cells ...)
     {
         this.cageSum = cageSum;
-        this.cells = cells.array;
+        add(cells);
         possibleSolutions = buildSolutions();
     }
 
@@ -154,6 +154,28 @@ class Cage
     private bool isComplete()
     {
         return count(ncells, 0) == 1;
+    }
+
+
+    /**
+     * Appends cells to `this`
+     * *Method used internaly only*
+     *
+     * Examples:
+     * ---
+     * this.add(new Cell(...), new Cell(...), ...)
+     * ---
+     *
+     * Params:
+     *     cells = cells to add
+     */
+    private void add(Cell[] cells ...)
+    {
+        foreach (ref Cell cell; cells)
+        {
+            if(!canFind(this.cells, cell))
+                this.cells ~= cell;
+        }
     }
 }
 
