@@ -9,8 +9,8 @@ import rule;
 public abstract class Sudoku
 {
     // FIXME: sudoku: change visibility attribute
-    public Rule[] rules;
     protected Grid _grid;
+    protected Rule[] rules;
 
 
     this(in uint side, in uint[][] puzzle)
@@ -36,7 +36,7 @@ public abstract class Sudoku
      * Set `this` for every **Rule** \
      * *Method used internaly only*
      */
-    private void regist()
+    protected void regist()
     {
         foreach (Rule rule; rules)
         {
