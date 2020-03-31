@@ -124,11 +124,12 @@ class Cage
 
     /**
      * Numeric array of cells
+     * *Method used internaly only*
      *
      * Returns:
      *     Range of the numbers in `this`
      */
-    public auto ncells() @property
+    private auto ncells() @property
     {
         return cells.map!(x => x.number);
     }
@@ -150,7 +151,7 @@ class Cage
      *     `true` if it's filled with numbers
      *     `false` otherwise
      */
-    public bool isComplete()
+    private bool isComplete()
     {
         return count(ncells, 0) == 1;
     }
