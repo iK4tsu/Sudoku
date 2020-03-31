@@ -20,7 +20,7 @@ abstract class Rule
      * this.sudoku = somesudoku;
      * ---
      */
-    public void sudoku(Sudoku sudoku) @property
+    package void sudoku(Sudoku sudoku) @property
     {
         _sudoku = sudoku;
     }
