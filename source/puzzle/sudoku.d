@@ -27,9 +27,18 @@ public abstract class Sudoku
     }
 
 
+    /**
+     * `_grid` getter
+     */
     public auto grid() @property
     {
         return _grid;
+    }
+
+
+    public auto ngrid() @property
+    {
+        return _grid();
     }
 
 
@@ -80,7 +89,7 @@ public abstract class Sudoku
     public auto solve()
     {
         backtrack(0, 0);
-        return grid();
+        return ngrid;
     }
 
 
