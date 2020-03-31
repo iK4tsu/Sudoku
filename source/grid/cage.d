@@ -180,7 +180,6 @@ class Cage
 }
 
 
-// TODO: cage: unittests
 @("Cage: ctor")
 unittest
 {
@@ -230,4 +229,19 @@ unittest
     Cage cage = new Cage(5, new Cell(2), new Cell(0));
 
     assert(cage.ncells.array == [2,0]);
+}
+
+
+@("Cage: add cells")
+unittest
+{
+    Cell cell = new Cell(2);
+    Cage cage = new Cage(5, cell, new Cell(0));
+
+    assert(cage.cells.length == 2);
+
+    // if we were to add a repeated cell in the ctor...
+    cage.add(cell);
+
+    assert(cage.cells.length == 2);
 }
