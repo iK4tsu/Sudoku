@@ -1,15 +1,20 @@
 module grid.cell;
 
-// FIXME: cell: refactor to struct
 class Cell
 {
     public uint number;
-    public const bool isBlocked;
+    private bool _isBlocked;
 
     this(in uint number)
     {
         this.number = number;
-        isBlocked = (number != 0);
+        _isBlocked = (number != 0);
+    }
+
+
+    public auto isBlocked() @property
+    {
+        return _isBlocked;
     }
 }
 
