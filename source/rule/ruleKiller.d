@@ -30,6 +30,21 @@ class RuleKiller : Rule
     }
 
 
+    /**
+     * Gets the **Cage** which contains the **Cell**
+     *
+     * Params:
+     *     cell = **Cell** to be searched
+     *
+     * Examples:
+     * ---
+     * Cage cage = this.get(somecell);
+     * ---
+     *
+     * Returns:
+     *     **Cage** if the **Cell** was found \
+     *     `null` otherwise
+     */
     private Cage get(Cell cell)
     {
         foreach (Cage cage; cages)
