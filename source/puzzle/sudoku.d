@@ -1,5 +1,6 @@
 module puzzle.sudoku;
 
+import std.algorithm : canFind;
 import std.array : array;
 import std.stdio : writeln;
 
@@ -47,6 +48,7 @@ public abstract class Sudoku
 
     /**
      * Append rules to `this`
+     * *Method used internaly*
      *
      * Params:
      *     rules =    rules to add
@@ -56,9 +58,13 @@ public abstract class Sudoku
      * add(new RuleClassic(), new RuleKiller(), ...);
      * ---
      */
-    public void add(Rule[] rules...)
+    protected void add(Rule[] rules...)
     {
-        this.rules ~= rules;
+        foreach (Rule rule; rules)
+        {
+            if (!canFind(this.rules, rule))
+                this.rules ~= rules;
+        }
     }
 
 
