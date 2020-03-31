@@ -9,10 +9,9 @@ import grid.cell;
 
 class Cage
 {
-    // FIXME: cage: change visibility attribute
-    public Cell[] cells;
-    public uint[][] possibleSolutions;
-    public const uint cageSum;
+    private Cell[] cells;
+    private uint[][] possibleSolutions;
+    private const uint cageSum;
 
 
     this(in uint cageSum, Cell[] cells ...)
