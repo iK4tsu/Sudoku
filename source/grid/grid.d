@@ -426,3 +426,13 @@ unittest
     g4x4[0, 1] = 4;
     assert(g4x4[0, 1].number == 4);
 }
+
+
+@("Grid: diagonals")
+unittest
+{
+    Grid grid = new Grid(9, puzzle9x9);
+
+    assert(grid.ndiagonalul == [0,0,0,1,5,6,0,0,0]);
+    assert(grid.ndiagonalur == [1,3,0,7,5,9,0,8,1]);
+}
