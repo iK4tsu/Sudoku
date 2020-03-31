@@ -7,11 +7,9 @@ import rule.rule;
 
 class RuleKiller : Rule
 {
-    // FIXME: rule_killer: change visibility attribute
-    public Cage[] cages;
+    private Cage[] cages;
 
 
-    // TODO: ruleKiller: documentation
     override public bool validate(in uint row, in uint column, in uint number)
     {
         // checks if the Cell is in cages
