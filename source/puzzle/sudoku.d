@@ -56,7 +56,7 @@ public abstract class Sudoku
 
 
     /**
-     * Append rules to `this`
+     * Append rules to `this` \
      * *Method used internaly*
      *
      * Params:
@@ -78,7 +78,7 @@ public abstract class Sudoku
 
 
     /**
-     * Tries to get a solution for `this`
+     * Tries to get a solution for `this` \
      * It calls the backtrack algorithm function
      *
      * Returns: uint matrix with or without the solution
@@ -94,7 +94,7 @@ public abstract class Sudoku
 
 
     /**
-     * Algorithm used to solve `this`
+     * Algorithm used to solve `this` \
      * *Method only used internaly only*
      *
      * Params:

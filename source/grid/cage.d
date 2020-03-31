@@ -23,7 +23,7 @@ class Cage
 
 
     /**
-     * Constructs every possible solution in `this`
+     * Constructs every possible solution in `this` \
      * *Method used only internaly*
      *
      * Examples:
@@ -123,7 +123,7 @@ class Cage
 
 
     /**
-     * Numeric array of cells
+     * Numeric array of cells \
      * *Method used internaly only*
      *
      * Returns:
@@ -136,10 +136,10 @@ class Cage
 
 
     /**
-     * Checks if `this` is full
-     * A **Cage** is full when there is just one `0` in it
+     * Checks if `this` is full \
+     * A **Cage** is full when there is just one `0` in it \
      * The reason being, the number isn't placed in the puzzle until
-     *     it's considered valid
+     *     it's considered valid \
      * *Method used internaly only*
      *
      * Examples:
@@ -158,7 +158,7 @@ class Cage
 
 
     /**
-     * Appends cells to `this`
+     * Appends cells to `this` \
      * *Method used internaly only*
      *
      * Examples:

@@ -28,7 +28,7 @@ class Grid
 
 
     /**
-     * Get the size of a subsection
+     * Get the size of a subsection \
      * If a grid has 9 length, then the sectionSize is 3
      *
      * Returns: `uint` variable
@@ -59,7 +59,7 @@ class Grid
 
 
     /**
-     * Constructs the puzzle
+     * Constructs the puzzle \
      * *Method used internaly only*
      *
      * Params:

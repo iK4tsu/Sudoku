@@ -9,7 +9,7 @@ abstract class Rule
 
 
     /**
-     * `_sudoku` setter
+     * `_sudoku` setter \
      * Method used internaly only
      *
      * Params:
