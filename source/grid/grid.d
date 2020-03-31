@@ -199,6 +199,54 @@ class Grid
 
 
     /**
+     * Numeric main diagonal of **Grid** \
+     * *UL = Upper Left
+     *
+     * Examples:
+     * ---
+     * auto diagonal = this.ndiagonalul();
+     * ---
+     *
+     * Returns:
+     *     `uint[][]` filled with the diagonal numbers
+     */
+    public auto ndiagonalul()
+    {
+        uint[] ret;
+        foreach (i, Cell[] arr; cells)
+        {
+            ret ~= arr[i].number;
+        }
+
+        return ret;
+    }
+
+
+    /**
+     * Numeric anti-diagonal of **Grid** \
+     * *UR = Upper Right
+     *
+     * Examples:
+     * ---
+     * auto diagonal = this.ndiagonalur();
+     * ---
+     *
+     * Returns:
+     *     `uint[][]` filled with the diagonal numbers
+     */
+    public auto ndiagonalur()
+    {
+        uint[] ret;
+        foreach (i, Cell[] arr; cells)
+        {
+            ret ~= arr[side - i - 1].number;
+        }
+
+        return ret;
+    }
+
+
+    /**
      * Prints the current numeric puzzle
      */
     public void print()
@@ -270,6 +318,50 @@ class Grid
     public bool findInSection(in uint row, in uint column, in uint n)
     {
         return nsection(row, column).join.canFind(n);
+    }
+
+
+    /**
+     * Checks if a number exists in the main diagonal \
+     * *UL = Upper Left*
+     *
+     * Params:
+     *     number = number to be evaluated
+     *
+     * Examples:
+     * ---
+     * !findInDiagonalUL(number);
+     * ---
+     *
+     * Returns:
+     *     `true` if the diagonal contains the number
+     *     `false` otherwise
+     */
+    public bool findInDiagonalUL(in uint number)
+    {
+        return canFind(ndiagonalul(), number);
+    }
+
+
+    /**
+     * Checks if a number exists in the anti-diagonal \
+     * *UR = Upper Right*
+     *
+     * Params:
+     *     number = number to be evaluated
+     *
+     * Examples:
+     * ---
+     * !findInDiagonalUR(number);
+     * ---
+     *
+     * Returns:
+     *     `true` if the diagonal contains the number
+     *     `false` otherwise
+     */
+    public bool findInDiagonalUR(in uint number)
+    {
+        return canFind(ndiagonalur(), number);
     }
 }
 
