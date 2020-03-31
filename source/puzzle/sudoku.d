@@ -9,8 +9,8 @@ import rule;
 public abstract class Sudoku
 {
     // FIXME: sudoku: change visibility attribute
-    public Grid grid;
     public Rule[] rules;
+    protected Grid _grid;
 
 
     this(in uint side, in uint[][] puzzle)
@@ -20,13 +20,18 @@ public abstract class Sudoku
 
     this(in uint side, in uint[][] puzzle, Rule[] rules...)
     {
-        grid = new Grid(side, puzzle);
+        _grid = new Grid(side, puzzle);
         add(rules);
         regist();
     }
 
 
-    // TODO: sudoku: documentation
+    public auto grid() @property
+    {
+        return _grid;
+    }
+
+
     /**
      * Set `this` for every **Rule** \
      * *Method used internaly only*
