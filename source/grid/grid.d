@@ -260,7 +260,7 @@ class Grid
      *
      * Params:
      *     column = **Grid** column
-     *     n = number to be evaluate
+     *     number = number to be evaluated
      *
      * Examples:
      * ---
@@ -271,9 +271,9 @@ class Grid
      *     `true` if the column contains the number
      *     `false` otherwise
      */
-    public bool findInColumn(in uint column, in uint n)
+    public bool findInColumn(in uint column, in uint number)
     {
-        return ncolumn(column).canFind(n);
+        return ncolumn(column).canFind(number);
     }
 
 
@@ -282,7 +282,7 @@ class Grid
      *
      * Params:
      *     row = **Grid** row
-     *     n = number to be evaluate
+     *     number = number to be evaluated
      *
      * Examples:
      * ---
@@ -293,9 +293,9 @@ class Grid
      *     `true` if the row contains the number
      *     `false` otherwise
      */
-    public bool findInRow(in uint row, in uint n)
+    public bool findInRow(in uint row, in uint number)
     {
-        return nrow(row).canFind(n);
+        return nrow(row).canFind(number);
     }
 
 
@@ -304,7 +304,7 @@ class Grid
      *
      * Params:
      *     section = **Grid** section
-     *     n = number to be evaluate
+     *     number = number to be evaluate
      *
      * Examples:
      * ---
@@ -315,9 +315,9 @@ class Grid
      *     `true` if the section contains the number
      *     `false` otherwise
      */
-    public bool findInSection(in uint row, in uint column, in uint n)
+    public bool findInSection(in uint row, in uint column, in uint number)
     {
-        return nsection(row, column).join.canFind(n);
+        return nsection(row, column).join.canFind(number);
     }
 
 
